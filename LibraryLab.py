@@ -1,58 +1,4 @@
-class LibraryItem:
-    def __init__(self, item_id, title, item_type, daily_rate):
-        self.item_id = item_id
-        self.title = title
-        self.item_type = item_type
-        self.daily_rate = daily_rate
-
-class CheckoutItem:
-    def __init__(self, library_item, days):
-        self.library_item = library_item 
-        self.days = days
-
-    def get_total(self):
-        return self.library_item.daily_rate * self.days
-
-
-# ==================================================
-# LOAD LIBRARY CATALOG FROM FILE
-# Reads items from catalog.txt
-# ==================================================
-def load_catalog(filename):
-  
-    with open(filename, "r") as file:
-        for line in file:
-            parts = line.strip().split(",")
-
-            # Create a LibraryItem from the file data
-            item = LibraryItem(
-                int(parts[0]),     # item ID
-                parts[1],          # title
-                parts[2],          # type
-                float(parts[3])    # daily rate
-            )
-
-            catalog.append(item)
-
-    return catalog
-
-
-# ==================================================
-# SAVE CHECKOUT ITEMS TO FILE
-# ==================================================
-def save_checkout(filename, checkout_list):
-    with open(filename, "w") as file:
-        for item in checkout_list:
-            file.write(
-                f"{item.library_item.item_id},"
-                f"{item.library_item.title},"
-                f"{item.days}\n"
-            )
-
-
-# ==================================================
-# LOAD CHECKOUT ITEMS FROM FILE
-# ==================================================
+#checkout used ai
 def load_checkout(filename, catalog):
     checkout = []
     with open(filename, "r") as file:
@@ -66,12 +12,9 @@ def load_checkout(filename, catalog):
                         CheckoutItem(lib_item, int(days))
                     )
 
-    return checkout
-
-
-# ==================================================
-# MAIN PROGRAM
-# ==================================================
+    return 
+    
+    #main progaram used example from cafe project
 def main():
     catalog_file = "catalog.txt"
     checkout_file = "checkout.txt"
